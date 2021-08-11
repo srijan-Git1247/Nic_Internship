@@ -16,7 +16,8 @@ namespace Nmms_Data_Entry_Software
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form2());
+           // Application.Run(new Form1());
         }
     }
 }

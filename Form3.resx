@@ -117,26 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="SQUARE_NIC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SQUARE_NIC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="download (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Screenshot (104)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Screenshot (104).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\R.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Passport_Size_Photo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Passport_Size_Photo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Screenshot (105)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Screenshot (105).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\R1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>National Means-Cum-Merit Scholarship is a Centrally sponsored scholarship scheme. It is implemented by the Department of School Education &amp; Literacy under the Ministry of Human Resource Development with the objective to financially support the meritorious students of economically weaker sections of the society. NMMS encourages disadvantaged students to continue their studies at the secondary level by offering a scholarship amount of INR 12,000 per annum. Every year, this MCM scholarship is made active during the month of November and almost 100,000 scholarships are disbursed among bright students.
+
+
+**Note**
+
+1) For this software application. microsoft excel 2008 office version (or above) is required.
+2) This software runs only on microsoft windows.
+
+</value>
   </data>
 </root>
