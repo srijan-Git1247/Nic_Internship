@@ -73,6 +73,16 @@ namespace Nmms_Data_Entry_Software.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap niclogo {
+            get {
+                object obj = ResourceManager.GetObject("niclogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Passport_Size_Photo {
             get {
                 object obj = ResourceManager.GetObject("Passport_Size_Photo", resourceCulture);

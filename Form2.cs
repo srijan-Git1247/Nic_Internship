@@ -33,12 +33,12 @@ namespace Nmms_Data_Entry_Software
 
         private void button3_Click(object sender, EventArgs e)//Exit Method Implementation
         {
-            Console.WriteLine("f2");
+            
             DialogResult iExit;
             iExit = MessageBox.Show("Are you sure you want to quit?", "Caution", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (iExit == DialogResult.Yes)
             {
-                Application.Exit();
+                Application.ExitThread();
             }
         }
 
@@ -46,5 +46,24 @@ namespace Nmms_Data_Entry_Software
         {
 
         }
+
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult iExit;
+            Console.WriteLine("Efef");
+            iExit = MessageBox.Show("Are you sure you want to quit?", "Caution", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (iExit == DialogResult.Yes)
+            {
+
+                Application.ExitThread();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+
+        }
     }
-}
+    }
+

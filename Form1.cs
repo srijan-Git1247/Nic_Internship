@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Hello My name is Sankalp
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,35 +13,58 @@ namespace Nmms_Data_Entry_Software
 {
     public partial class Form1 : Form
     {
+
         string Gender;//stores the gender
         string Category;//stores the category
-        int YearFlag;
+
         int MarksFlag;
-        int PassFlag;
+
 
         public Form1()
         {
             InitializeComponent();
+
+
+
+
+
+
             textBoxApplicationName.Text = "";
             textBoxRollNo.Text = "";
             textBoxFather.Text = "";
-            textBoxExam.Text = "";
+
             textBoxMarks.Text = "";
             comboBox1.SelectedItem = null;
-            textBox1.Text = "";
+            comboBox2.SelectedItem = null;
+            string year = dateTimePicker1.Value.ToString().Substring(6, 4);
+            Console.Write(year);
+            Console.WriteLine(year);
+            //Real Time Year
+
+            comboBox2.Items.Add(year);
+            for (int z = 0; z < 4; z++)
+            {
+                int y = Int32.Parse(year);
+                y--;
+                year = y.ToString();
+                comboBox2.Items.Add(year);
+            }
+
+
+            textBoxApplicationName3.Text = "";
             Gender = "";
             Category = "";
-            textBox2.Text = "";
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+            textBoxApplicationName2.Text = "";
+            textBoxFather2.Text = "";
+            textBoxFather3.Text = "";
 
         }
+
+
 
         private void button6_Click(object sender, EventArgs e)//Exit Button
         {
-            
+
         }
         private void Exit()//Exit Method Implementation
         {
@@ -54,19 +78,15 @@ namespace Nmms_Data_Entry_Software
 
         private void button1_Click(object sender, EventArgs e)//Add Button
         {
-            if ((textBoxApplicationName.Text == "") || (textBoxRollNo.Text == "") || (textBoxFather.Text == "") || (textBoxExam.Text == "") || (textBoxMarks.Text == "") || (comboBox1.SelectedItem == null) || (Gender == "") || (Category == ""))
+            if ((textBoxApplicationName.Text == "") || (textBoxApplicationName3.Text == "") || (textBoxRollNo.Text == "") || (textBoxFather.Text == "") || (textBoxFather3.Text == "") || (textBoxMarks.Text == "") || (comboBox1.SelectedItem == null) || (Gender == "") || (Category == "") || (comboBox2.SelectedItem == null))
             {
                 DialogResult iExit;
                 iExit = MessageBox.Show("Please enter full details of the student", "Caution");
             }
             else
             {
-                if (YearFlag == -1)
-                {
-                    DialogResult iExit;
-                    iExit = MessageBox.Show("Please Enter a valid Exam date", "Caution");
-                }
-                else if (MarksFlag == -1)
+
+                if (MarksFlag == -1)
                 {
                     DialogResult iExit;
                     iExit = MessageBox.Show("Please Check the Marks", "Caution");
@@ -82,22 +102,122 @@ namespace Nmms_Data_Entry_Software
 
                         //Console.WriteLine(s);
                         string roll = textBoxRollNo.Text;
-                        dataGridView1.Rows.Add(textBoxApplicationName.Text,
+
+                        //middle Name student
+                        string m = textBoxApplicationName2.Text.Trim();
+                        string word = "";
+                        int count = 0;
+                        for (int i = 0; i < m.Length; i++)
+                        {
+                            if (m[i] != ' ')
+                            {
+                                word = word + m[i];
+                                Console.WriteLine(word);
+                                count = 0;
+
+
+
+
+                            }
+                            if (m[i] == ' ' && count == 0)
+                            {
+                                count++;
+                                word = word + m[i];
+
+
+                            }
+
+                        }
+                        //middle Name Father
+
+                        //string roll = textBoxRollNo.Text;
+                        string mid = textBoxFather2.Text.Trim();
+                        string wor = "";
+                        int coun = 0;
+                        for (int i = 0; i < mid.Length; i++)
+                        {
+                            if (mid[i] != ' ')
+                            {
+                                wor = wor + mid[i];
+
+                                coun = 0;
+
+
+
+
+                            }
+                            if (mid[i] == ' ' && coun == 0)
+                            {
+                                coun++;
+                                wor = wor + mid[i];
+
+
+                            }
+
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        string applicationName = textBoxApplicationName.Text + " " + word + " " + textBoxApplicationName3.Text;
+
+
+
+
+
+
+
+
+
+                        string fatherName = textBoxFather.Text + " " + wor + " " + textBoxFather3.Text;
+
+
+
+                        if (textBoxApplicationName2.Text == "")
+                        {
+
+                            applicationName = textBoxApplicationName.Text + " " + textBoxApplicationName3.Text;
+                        }
+
+                        if (textBoxFather2.Text == "")
+                        {
+
+                            fatherName = textBoxFather.Text + " " + textBoxFather3.Text;
+                        }
+
+
+
+
+                        dataGridView1.Rows.Add(applicationName,
                                                 roll,
                                                 date,
-                                                textBoxFather.Text,
+                                                fatherName,
                                                 Category,
                                                 Gender,
-                                                textBoxExam.Text,
+                                                comboBox2.SelectedItem.ToString(),
                                                 textBoxMarks.Text,
                                                 textBoxState.Text,
                                                 comboBox1.SelectedItem.ToString()
                                                 );
                         //clearing the data
                         textBoxApplicationName.Text = "";
+                        textBoxApplicationName2.Text = "";
+                        textBoxApplicationName3.Text = "";
                         textBoxRollNo.Text = "";
 
                         textBoxFather.Text = "";
+                        textBoxFather2.Text = "";
+                        textBoxFather3.Text = "";
 
                         radioButton1.Checked = false;//reSetting the gender button
                         radioButton2.Checked = false;
@@ -108,7 +228,8 @@ namespace Nmms_Data_Entry_Software
                         radioButton7.Checked = false;
 
                         comboBox1.SelectedItem = null;//resetting the district
-                        textBoxExam.Text = "";
+                        comboBox2.SelectedItem = null;
+
                         textBoxMarks.Text = "";
 
                         // textBoxDistrict.Text = "";
@@ -121,6 +242,18 @@ namespace Nmms_Data_Entry_Software
                 }
             }
         }
+
+        /*    protected override void OnFormClosing(FormClosingEventArgs e)
+            {
+
+                DialogResult iExit;
+                iExit = MessageBox.Show("Are you sure you want to quit?", "Caution", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (iExit == DialogResult.Yes)
+                {
+
+
+                }
+            }*/
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)//Setting up Gender radio Buttons
         {
@@ -165,34 +298,41 @@ namespace Nmms_Data_Entry_Software
             if (iExit == DialogResult.Yes)
             {
                 //Clearing all data
+                textBoxRollNo.Text = "";
+
                 textBoxApplicationName.Text = "";
+                textBoxApplicationName2.Text = "";
+                textBoxApplicationName3.Text = "";
                 textBoxRollNo.Text = "";
 
                 textBoxFather.Text = "";
-
+                textBoxFather2.Text = "";
+                textBoxFather3.Text = "";
+                pictureBox2.Visible = false;
                 pictureBox3.Visible = false;
                 label11.Text = "";
-                pictureBox2.Visible = false;
-                pictureBox4.Visible = false;
+
+                //pictureBox4.Visible = false;
                 label15.Text = "";
                 label12.Text = "";
                 radioButton1.Checked = false;//reSetting the gender button
                 radioButton2.Checked = false;
                 radioButton3.Checked = false;
                 Gender = "";
-                textBox1.Text = "";
-                textBox2.Text = "";
+                textBoxApplicationName3.Text = "";
+                textBoxApplicationName2.Text = "";
                 radioButton4.Checked = false;//reSetting the Category button
                 radioButton5.Checked = false;
                 radioButton6.Checked = false;
                 radioButton7.Checked = false;
-                comboBox1.SelectedItem = null;//resetting the district
+                comboBox1.SelectedItem = null;
+                comboBox2.SelectedItem = null;//resetting the district
                 Category = "";
-                textBoxExam.Text = "";
+
 
                 textBoxMarks.Text = "";
                 textBoxMarks.ReadOnly = true;
-                textBox2.ReadOnly = true;
+
 
                 //   textBoxDistrict.Text = "";
                 //Clearing the data grid
@@ -215,24 +355,13 @@ namespace Nmms_Data_Entry_Software
 
         private void button5_Click(object sender, EventArgs e)//Export to Excel
         {
-            if (textBox1.Text == "")
-            {
-                DialogResult iExi;
-                iExi = MessageBox.Show("Please Enter a password for the excel", "Caution");
-            }
-            else if (PassFlag != 1)
-            {
-                DialogResult iExi;
-                iExi = MessageBox.Show("Password not matching!!", "Caution");
-            }
-            else
-            {
+            try {
                 Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
                 Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
                 Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
                 app.Visible = true;
 
-                workbook.WritePassword = textBox1.Text;
+                // workbook.WritePassword = "12345";
                 worksheet = workbook.Sheets["Sheet1"];
 
                 worksheet = workbook.ActiveSheet;
@@ -272,6 +401,13 @@ namespace Nmms_Data_Entry_Software
                         }
                     }
                 }
+            }
+
+            catch (Exception)
+            {
+                DialogResult iExit;
+                iExit = MessageBox.Show("Microsoft Excel Version Not available in the system", "Caution");
+
             }
         }
 
@@ -319,14 +455,7 @@ namespace Nmms_Data_Entry_Software
             }
         }
 
-        private void textBoxExam_KeyPress(object sender, KeyPressEventArgs e)//Restricting Year field to have only integers
-        {
-            char ch = e.KeyChar;
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-        }
+
 
         private void textBoxMarks_KeyPress(object sender, KeyPressEventArgs e)//Restricting Year field to have only integers
         {
@@ -402,36 +531,11 @@ namespace Nmms_Data_Entry_Software
             }
         }
 
-        private void textBoxExam_TextChanged(object sender, EventArgs e)//Validating Exam year between 2021 to 2100
-        {
-            try
-            {
-                if (Int32.Parse(textBoxExam.Text) < 2021 || Int32.Parse(textBoxExam.Text) > 2100)
-                {
-                    pictureBox2.Visible = true;
-                    label12.ForeColor = Color.Red;
 
-                    label12.Text = "Enter a Valid Year!";
-                    YearFlag = -1;
-                }
-                else
-                {
-                    pictureBox2.Visible = true;
-                    label12.ForeColor = Color.Green;
-                    label12.Text = "Okay!";
-                    YearFlag = 0;
-                }
-            }
-            catch (Exception)
-            {
-                pictureBox2.Visible = false;
-                label12.Text = "";
-            }
-        }
 
         private void textBoxApplicationName_KeyPress(object sender, KeyPressEventArgs e)//Applicant name will get only letters
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -439,7 +543,7 @@ namespace Nmms_Data_Entry_Software
 
         private void textBoxFather_KeyPress(object sender, KeyPressEventArgs e)//Father name will get only letters
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -514,80 +618,191 @@ namespace Nmms_Data_Entry_Software
             }
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (textBox1.Text == "")
-            {
-                pictureBox4.Visible = true;
-                label15.ForeColor = Color.Red;
-                label15.Text = "Set the password";
-            }
-            else
-            {
-                pictureBox4.Visible = false;
-                label15.Text = "";
-                textBox2.ReadOnly = false;
-                Pass();
-            }
-        }
-        private void Pass()
-        {
-            // Console.WriteLine(textBox1.Text);
-            //Console.WriteLine(textBox2.Text);
-            if (textBox1.Text.Equals(textBox2.Text) == false && textBox1.Text != "")
-            {
-                pictureBox4.Visible = true;
-                label15.ForeColor = Color.Red;
-                label15.Text = "Not Matching!!";
-                PassFlag = 0;
-            }
-            if (textBox1.Text.Equals(textBox2.Text) && textBox1.Text != "")
-            {
 
-                pictureBox4.Visible = true;
-                label15.ForeColor = Color.Green;
-                label15.Text = "Password Matched!";
-                PassFlag = 1;
-
-
-            }
-        }
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (pictureBox4.Visible == true && label15.Text != "")
-            {
-                pictureBox4.Visible = false;
-                label15.Text = "";
-            }
-            if (textBox2.Text != "")
-            {
-                textBox2.Text = "";
-            }
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            Pass();
-        }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            if (textBoxApplicationName3.Text == "")
             {
-                textBox2.ReadOnly = true;
+                textBoxApplicationName2.ReadOnly = true;
             }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form2 f = new Form2();
-            f.ShowDialog();
+            DialogResult iExit;
+            iExit = MessageBox.Show("Are you sure you want to go back to home page?", "Caution", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (iExit == DialogResult.Yes)
+            {
+                this.Hide();
+                Form2 f = new Form2();
+                f.Show();
+            }
+
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult iExit;
+            iExit = MessageBox.Show("Are you sure you want to quit?", "Caution", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (iExit == DialogResult.Yes)
+            {
+
+                Application.ExitThread();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+
+        }
+
+        private void textBoxApplicationName2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxApplicationName_Leave(object sender, EventArgs e)
+        {
+            if (textBoxApplicationName.Text == "")
+            {
+                pictureBox2.Visible = true;
+                label20.ForeColor = Color.Red;
+                label20.Text = "Cannot be Empty!!";
+            }
+            else
+            {
+                pictureBox2.Visible = false;
+
+                label20.Text = "";
+
+            }
+
+        }
+
+        private void textBoxApplicationName_Enter(object sender, EventArgs e)
+        {
+            pictureBox2.Visible = false;
+
+            label20.Text = "";
+        }
+
+        private void textBoxApplicationName3_Leave(object sender, EventArgs e)
+        {
+            if (textBoxApplicationName3.Text == "")
+            {
+                pictureBox4.Visible = true;
+                label21.ForeColor = Color.Red;
+                label21.Text = "Cannot be Empty!!";
+            }
+            else
+            {
+                pictureBox4.Visible = false;
+
+                label21.Text = "";
+
+            }
+        }
+
+        private void textBoxApplicationName3_Enter(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = false;
+
+            label21.Text = "";
+
+        }
+
+        private void textBoxFather_Leave(object sender, EventArgs e)
+        {
+            if (textBoxFather.Text == "")
+            {
+                pictureBox5.Visible = true;
+                label22.ForeColor = Color.Red;
+                label22.Text = "Cannot be Empty!!";
+            }
+            else
+            {
+                pictureBox5.Visible = false;
+
+                label22.Text = "";
+
+            }
+        }
+
+        private void textBoxFather_Enter(object sender, EventArgs e)
+        {
+            pictureBox5.Visible = false;
+
+            label22.Text = "";
+        }
+
+        private void textBoxFather3_Leave(object sender, EventArgs e)
+        {
+
+            if (textBoxFather3.Text == "")
+            {
+                pictureBox6.Visible = true;
+                label23.ForeColor = Color.Red;
+                label23.Text = "Cannot be Empty!!";
+            }
+            else
+            {
+                pictureBox6.Visible = false;
+
+                label23.Text = "";
+
+            }
+        }
+
+        private void textBoxFather3_Enter(object sender, EventArgs e)
+        {
+            pictureBox6.Visible = false;
+
+            label23.Text = "";
+        }
+
+        private void textBoxRollNo_Leave(object sender, EventArgs e)
+        {
+            if (textBoxRollNo.Text == "")
+            {
+                pictureBox7.Visible = true;
+                label24.ForeColor = Color.Red;
+                label24.Text = "Cannot be Empty!!";
+            }
+            else
+            {
+                pictureBox7.Visible = false;
+
+                label24.Text = "";
+
+            }
+        }
+
+        private void textBoxRollNo_Enter(object sender, EventArgs e)
+        {
+            pictureBox7.Visible = false;
+
+            label24.Text = "";
+        }
     }
+
+
+
+
+    //Red flag code
+
 }
+

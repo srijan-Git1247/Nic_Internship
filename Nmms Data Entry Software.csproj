@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Mr Striker\Desktop\NIC PROJECT\Software\</PublishUrl>
+    <PublishUrl>D:\New folder\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Nmms Data Entry For Nic</ProductName>
     <PublisherName>TrpleS%28Nic Sikkim Intern 2021%29</PublisherName>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>21</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Nic.ico.ico" />
+    <None Include="Resources\niclogo.jpeg" />
     <None Include="Resources\R.png" />
     <None Include="Resources\R1.png" />
     <None Include="Resources\download %281%29.jpg" />

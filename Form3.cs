@@ -31,7 +31,7 @@ namespace Nmms_Data_Entry_Software
         {
             this.Hide();
             Form2 f = new Form2();
-            f.ShowDialog();
+            f.Show();
         }
     }
 }
